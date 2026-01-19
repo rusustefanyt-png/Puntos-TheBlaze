@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>-=- TOP STAFFS</title>
+    <title>Minecraft Leaderboard - TOP STAFFS</title>
     <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
     <style>
         :root {
             --mc-green: #55FF55;
-            --mc-dark-overlay: rgba(0, 0, 0, 0.6);
             --mc-neon-blue: #00fbff;
             --mc-gold: #FFD700;
         }
 
         body {
-            /* Imagen de fondo solicitada */
-            background-image: linear-gradient(var(--mc-dark-overlay), var(--mc-dark-overlay)), 
+            /* Imagen de fondo (Remake del wallpaper clásico en estilo moderno) */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
                               url('https://www.xtrafondos.com/thumbs/webp/1_13258.webp'); 
-            /* Nota: Si el enlace directo de Reddit llegara a fallar por protección de hotlinking, 
-               puedes reemplazar la URL por la imagen descargada */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -33,76 +30,78 @@
 
         .container {
             width: 95%;
-            max-width: 600px;
+            max-width: 650px;
             text-align: center;
             padding: 20px;
         }
 
         h1 {
             color: #FFFFFF;
-            text-shadow: 0 0 15px var(--mc-neon-blue), 3px 3px 0px #000;
-            font-size: 2.5rem;
+            text-shadow: 0 0 20px var(--mc-neon-blue), 4px 4px 0px #000;
+            font-size: 2.8rem;
             margin-bottom: 30px;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
         }
 
         .leaderboard-table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 0 8px;
-            background: rgba(0, 0, 0, 0.7); /* Fondo oscuro para que se lea el texto */
-            padding: 25px;
-            border-radius: 10px;
+            border-spacing: 0 10px;
+            background: rgba(0, 0, 0, 0.75); /* Fondo oscuro semitransparente */
+            padding: 30px;
+            border-radius: 15px;
             border: 3px solid var(--mc-neon-blue);
-            box-shadow: 0 0 30px rgba(0, 251, 255, 0.3);
-            backdrop-filter: blur(5px); /* Efecto de cristal esmerilado */
+            box-shadow: 0 0 40px rgba(0, 251, 255, 0.25);
+            backdrop-filter: blur(8px); /* Desenfoque moderno del fondo */
         }
 
         thead th {
             color: var(--mc-neon-blue);
-            padding-bottom: 15px;
+            padding-bottom: 20px;
             text-transform: uppercase;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             border-bottom: 2px solid rgba(0, 251, 255, 0.3);
         }
 
         tbody tr {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
             transition: all 0.3s ease;
         }
 
         tbody tr:hover {
-            transform: scale(1.03);
+            transform: scale(1.02);
             background: rgba(0, 251, 255, 0.15);
-            box-shadow: 0 0 15px rgba(0, 251, 255, 0.4);
+            box-shadow: 0 0 15px rgba(0, 251, 255, 0.3);
         }
 
         td {
-            padding: 12px;
+            padding: 15px;
             border: none;
         }
 
         .rank {
             font-weight: bold;
-            color: #aaa;
+            color: #bdc3c7;
         }
 
         .nick {
             text-align: left;
-            padding-left: 20px;
-            color: #eee;
+            padding-left: 25px;
+            color: #ffffff;
+            font-size: 1.1rem;
         }
 
         .puntos {
             font-weight: bold;
             color: var(--mc-green);
-            text-shadow: 0 0 8px var(--mc-green);
+            text-shadow: 0 0 10px var(--mc-green);
+            font-size: 1.2rem;
         }
 
-        /* Colores especiales para el podio */
+        /* Colores especiales para el TOP 3 */
         tr:nth-child(1) .rank { color: var(--mc-gold); text-shadow: 0 0 10px var(--mc-gold); }
-        tr:nth-child(2) .rank { color: #E5E4E2; }
-        tr:nth-child(3) .rank { color: #CD7F32; }
+        tr:nth-child(2) .rank { color: #d1d1d1; }
+        tr:nth-child(3) .rank { color: #cd7f32; }
 
     </style>
 </head>
@@ -114,8 +113,8 @@
     <table class="leaderboard-table">
         <thead>
             <tr>
-                <th>Rango</th>
-                <th class="nick">Usuario</th>
+                <th>Pos</th>
+                <th class="nick">Staff</th>
                 <th>Puntos</th>
             </tr>
         </thead>
@@ -125,6 +124,7 @@
 </div>
 
 <script>
+    // Lista de datos
     const staffData = [
         { nick: "Jaker777", puntos: 17 },
         { nick: "Inzan2828", puntos: 16 },
@@ -137,7 +137,7 @@
         { nick: "ItzSamu", puntos: 0 }
     ];
 
-    const container = document.getElementById('staff-list');
+    const tableBody = document.getElementById('staff-list');
 
     staffData.forEach((staff, i) => {
         const row = `
@@ -147,10 +147,9 @@
                 <td class="puntos">${staff.puntos}</td>
             </tr>
         `;
-        container.innerHTML += row;
+        tableBody.innerHTML += row;
     });
 </script>
 
 </body>
-
 </html>
