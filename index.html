@@ -4,105 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minecraft Leaderboard - TOP STAFFS</title>
-    <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --mc-green: #55FF55;
-            --mc-neon-blue: #00fbff;
-            --mc-gold: #FFD700;
+            --primary-blue: #74ebd5;
+            --secondary-blue: #acb6e5;
+            --neon-blue: #00d2ff;
+            --gold: #FFD700;
+            --silver: #C0C0C0;
+            --bronze: #CD7F32;
+            --text-dark: #2c3e50;
         }
 
         body {
-            /* Imagen de fondo (Remake del wallpaper clásico en estilo moderno) */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                              url('https://www.xtrafondos.com/thumbs/webp/1_13258.webp'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            font-family: 'Minecraftia', sans-serif;
+            /* Fondo azul cielo degradado muy suave y estético */
+            background: linear-gradient(135deg, #e0f7fa 0%, #acb6e5 100%);
+            font-family: 'Montserrat', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            color: var(--text-dark);
         }
 
         .container {
-            width: 95%;
-            max-width: 650px;
-            text-align: center;
-            padding: 20px;
+            width: 90%;
+            max-width: 550px;
+            perspective: 1000px;
         }
 
         h1 {
-            color: #FFFFFF;
-            text-shadow: 0 0 20px var(--mc-neon-blue), 4px 4px 0px #000;
-            font-size: 2.8rem;
-            margin-bottom: 30px;
-            letter-spacing: 4px;
-        }
-
-        .leaderboard-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 10px;
-            background: rgba(0, 0, 0, 0.75); /* Fondo oscuro semitransparente */
-            padding: 30px;
-            border-radius: 15px;
-            border: 3px solid var(--mc-neon-blue);
-            box-shadow: 0 0 40px rgba(0, 251, 255, 0.25);
-            backdrop-filter: blur(8px); /* Desenfoque moderno del fondo */
-        }
-
-        thead th {
-            color: var(--mc-neon-blue);
-            padding-bottom: 20px;
+            text-align: center;
+            font-weight: 900;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ffffff;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            border-bottom: 2px solid rgba(0, 251, 255, 0.3);
+            letter-spacing: -1px;
+            /* Sombra de texto elegante */
+            text-shadow: 4px 4px 0px rgba(0,0,0,0.1), 0 0 20px rgba(255,255,255,0.4);
         }
 
-        tbody tr {
-            background: rgba(255, 255, 255, 0.03);
+        .leaderboard-card {
+            background: rgba(255, 255, 255, 0.7); /* Efecto cristal */
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .table-header {
+            display: grid;
+            grid-template-columns: 60px 1fr 100px;
+            padding: 10px 20px;
+            font-weight: 700;
+            color: rgba(0,0,0,0.4);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 60px 1fr 100px;
+            align-items: center;
+            background: #ffffff;
+            margin: 10px 0;
+            padding: 15px 20px;
+            border-radius: 20px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
 
-        tbody tr:hover {
-            transform: scale(1.02);
-            background: rgba(0, 251, 255, 0.15);
-            box-shadow: 0 0 15px rgba(0, 251, 255, 0.3);
+        .row:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 210, 255, 0.2);
+            background: #fdfdfd;
         }
 
-        td {
-            padding: 15px;
-            border: none;
-        }
-
-        .rank {
-            font-weight: bold;
+        .pos {
+            font-weight: 900;
+            font-size: 1.2rem;
             color: #bdc3c7;
         }
 
         .nick {
-            text-align: left;
-            padding-left: 25px;
-            color: #ffffff;
+            font-weight: 700;
             font-size: 1.1rem;
+            color: var(--text-dark);
         }
 
-        .puntos {
-            font-weight: bold;
-            color: var(--mc-green);
-            text-shadow: 0 0 10px var(--mc-green);
-            font-size: 1.2rem;
+        .points-box {
+            background: var(--primary-blue);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 900;
+            box-shadow: 0 4px 10px rgba(116, 235, 213, 0.4);
         }
 
-        /* Colores especiales para el TOP 3 */
-        tr:nth-child(1) .rank { color: var(--mc-gold); text-shadow: 0 0 10px var(--mc-gold); }
-        tr:nth-child(2) .rank { color: #d1d1d1; }
-        tr:nth-child(3) .rank { color: #cd7f32; }
+        /* Estilos para el Podio (Top 3) */
+        .row:nth-child(1) { border-left: 8px solid var(--gold); }
+        .row:nth-child(1) .pos { color: var(--gold); }
+        .row:nth-child(1) .points-box { background: var(--gold); box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4); }
 
+        .row:nth-child(2) { border-left: 8px solid var(--silver); }
+        .row:nth-child(3) { border-left: 8px solid var(--bronze); }
+
+        /* Animación de entrada */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .row {
+            animation: fadeInUp 0.5s ease forwards;
+        }
     </style>
 </head>
 <body>
@@ -110,44 +130,45 @@
 <div class="container">
     <h1>TOP STAFFS</h1>
     
-    <table class="leaderboard-table">
-        <thead>
-            <tr>
-                <th>Pos</th>
-                <th class="nick">Staff</th>
-                <th>Puntos</th>
-            </tr>
-        </thead>
-        <tbody id="staff-list">
-            </tbody>
-    </table>
+    <div class="leaderboard-card">
+        <div class="table-header">
+            <span>#</span>
+            <span>Staff</span>
+            <span>Puntos</span>
+        </div>
+        
+        <div id="leaderboard-content">
+            </div>
+    </div>
 </div>
 
 <script>
-    // Lista de datos
-    const staffData = [
-        { nick: "Jaker777", puntos: 17 },
-        { nick: "Inzan2828", puntos: 16 },
-        { nick: "FuriaMC_", puntos: 4 },
-        { nick: "Dunteproo", puntos: 0 },
-        { nick: "Systematic", puntos: 0 },
-        { nick: "Vpedro14", puntos: 0 },
-        { nick: "0145mas", puntos: 0 },
-        { nick: "ItsDani", puntos: 0 },
-        { nick: "ItzSamu", puntos: 0 }
+    const data = [
+        { nick: "Jaker777", pts: 17 },
+        { nick: "Inzan2828", pts: 16 },
+        { nick: "FuriaMC_", pts: 4 },
+        { nick: "Dunteproo", pts: 0 },
+        { nick: "Systematic", pts: 0 },
+        { nick: "Vpedro14", pts: 0 },
+        { nick: "0145mas", pts: 0 },
+        { nick: "ItsDani", pts: 0 },
+        { nick: "ItzSamu", pts: 0 }
     ];
 
-    const tableBody = document.getElementById('staff-list');
+    const content = document.getElementById('leaderboard-content');
 
-    staffData.forEach((staff, i) => {
+    data.forEach((user, i) => {
+        const delay = i * 0.1; // Efecto de cascada
         const row = `
-            <tr>
-                <td class="rank">#${i + 1}</td>
-                <td class="nick">${staff.nick}</td>
-                <td class="puntos">${staff.puntos}</td>
-            </tr>
+            <div class="row" style="animation-delay: ${delay}s">
+                <div class="pos">${i + 1}</div>
+                <div class="nick">${user.nick}</div>
+                <div class="points">
+                    <div class="points-box">${user.pts}</div>
+                </div>
+            </div>
         `;
-        tableBody.innerHTML += row;
+        content.innerHTML += row;
     });
 </script>
 
