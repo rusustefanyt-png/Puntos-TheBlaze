@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>-=- TOP STAFFS</title>
+    <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+    <style>
+        :root {
+            --mc-green: #55FF55;
+            --mc-dark-overlay: rgba(0, 0, 0, 0.6);
+            --mc-neon-blue: #00fbff;
+            --mc-gold: #FFD700;
+        }
+
+        body {
+            /* Imagen de fondo solicitada */
+            background-image: linear-gradient(var(--mc-dark-overlay), var(--mc-dark-overlay)), 
+                              url('https://www.xtrafondos.com/thumbs/1_13258.jpg'); 
+            /* Nota: Si el enlace directo de Reddit llegara a fallar por protección de hotlinking, 
+               puedes reemplazar la URL por la imagen descargada */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            font-family: 'Minecraftia', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #FFFFFF;
+            text-shadow: 0 0 15px var(--mc-neon-blue), 3px 3px 0px #000;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+            background: rgba(0, 0, 0, 0.7); /* Fondo oscuro para que se lea el texto */
+            padding: 25px;
+            border-radius: 10px;
+            border: 3px solid var(--mc-neon-blue);
+            box-shadow: 0 0 30px rgba(0, 251, 255, 0.3);
+            backdrop-filter: blur(5px); /* Efecto de cristal esmerilado */
+        }
+
+        thead th {
+            color: var(--mc-neon-blue);
+            padding-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            border-bottom: 2px solid rgba(0, 251, 255, 0.3);
+        }
+
+        tbody tr {
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        tbody tr:hover {
+            transform: scale(1.03);
+            background: rgba(0, 251, 255, 0.15);
+            box-shadow: 0 0 15px rgba(0, 251, 255, 0.4);
+        }
+
+        td {
+            padding: 12px;
+            border: none;
+        }
+
+        .rank {
+            font-weight: bold;
+            color: #aaa;
+        }
+
+        .nick {
+            text-align: left;
+            padding-left: 20px;
+            color: #eee;
+        }
+
+        .puntos {
+            font-weight: bold;
+            color: var(--mc-green);
+            text-shadow: 0 0 8px var(--mc-green);
+        }
+
+        /* Colores especiales para el podio */
+        tr:nth-child(1) .rank { color: var(--mc-gold); text-shadow: 0 0 10px var(--mc-gold); }
+        tr:nth-child(2) .rank { color: #E5E4E2; }
+        tr:nth-child(3) .rank { color: #CD7F32; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>TOP STAFFS</h1>
+    
+    <table class="leaderboard-table">
+        <thead>
+            <tr>
+                <th>Rango</th>
+                <th class="nick">Usuario</th>
+                <th>Puntos</th>
+            </tr>
+        </thead>
+        <tbody id="staff-list">
+            </tbody>
+    </table>
+</div>
+
+<script>
+    const staffData = [
+        { nick: "Jaker777", puntos: 17 },
+        { nick: "Inzan2828", puntos: 16 },
+        { nick: "FuriaMC_", puntos: 4 },
+        { nick: "Dunteproo", puntos: 0 },
+        { nick: "Systematic", puntos: 0 },
+        { nick: "Vpedro14", puntos: 0 },
+        { nick: "0145mas", puntos: 0 },
+        { nick: "ItsDani", puntos: 0 },
+        { nick: "ItzSamu", puntos: 0 }
+    ];
+
+    const container = document.getElementById('staff-list');
+
+    staffData.forEach((staff, i) => {
+        const row = `
+            <tr>
+                <td class="rank">#${i + 1}</td>
+                <td class="nick">${staff.nick}</td>
+                <td class="puntos">${staff.puntos}</td>
+            </tr>
+        `;
+        container.innerHTML += row;
+    });
+</script>
+
+</body>
+</html>
